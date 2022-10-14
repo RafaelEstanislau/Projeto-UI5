@@ -1,0 +1,29 @@
+<mvc:View
+	controllerName="sap.ui.demo.walkthrough.controller.Detail"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:wt="sap.ui.demo.walkthrough.control">
+	<Page
+		title="{i18n>tituloLivroSelecionado}"
+		showNavButton= "true"
+		navButtonPress= ".onNavBack">
+		<ObjectHeader
+		responsive= "true"
+		fullScreenOptimized="true"
+		title="{listaDeLivros>titulo}">
+		<attributes>
+			<ObjectAttribute title="{i18n>dataDeLancamento}" text="{
+				path: 'listaDeLivros>lancamento',
+				type: 'sap.ui.model.type.Date',
+				formatOptions: {
+				  style: 'short,
+				  source: {
+					pattern: 'yyyy-MM-ddTHH:mm:ss'
+				  }
+				}
+			  }"/>
+		</attributes>
+		</ObjectHeader>
+		<wt:ProductRating id="rating" class="sapUiSmallMarginBeginEnd" change=".onRatingChange"/>
+	</Page>
+</mvc:View>

@@ -1,13 +1,23 @@
-﻿sap.ui.define([
-	"sap/ui/core/mvc/XMLView"
-], function (XMLView) {
-	"use strict";
+﻿sap.ui.require([
+    "sap/ui/core/mvc/XMLView",
+    "sap/ui/model/resource/ResourceModel"
+], function ( XMLView, ResourceModel) {
+    "use strict";
+        sap.ui.getCore().attachInit(function () {
+        var oResourceModel = new ResourceModel({
 
-	XMLView.create({
-		viewName: "sap.ui.demo.walkthrough.view.App"
-	}).then(function (oView) {
-		oView.placeAt("content");
-	});
+            bundleName: "sap.ui.demo.walkthrough.i18n.i18n",
+            supportedLocales: [""],
+            fallbackLocale: ""
+        });
+        sap.ui.getCore().setModel(oResourceModel, "i18n");
+        var oView = new XMLView({
+            viewName:"sap.ui.demo.walkthrough.view.App"
+        });
+        sap.ui.getCore().getMessageManager().registerObject(oView, true);
+        oView.placeAt("content");
+
+    });
 
 });
 
