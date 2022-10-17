@@ -58,9 +58,9 @@
 		  "target": "overview"
 		},
 		{
-		  "pattern": "detalhes",
-		  "name": "detalhes",
-		  "target": "detalhes"
+		  "pattern": "detail/{id}",
+		  "name": "detail",
+		  "target": "detail"
 		}
 	  ],
 	  "targets": {
@@ -68,9 +68,9 @@
 		  "id": "overview",
 		  "name": "Overview"
 		},
-		"detalhes": {
-		  "id": "detalhes",
-		  "name": "Detalhes"
+		"detail": {
+		  "id": "detail",
+		  "name": "Detail"
 		}
 	  }
 	}

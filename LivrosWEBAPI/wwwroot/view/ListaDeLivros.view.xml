@@ -42,7 +42,7 @@
     <items>
         <ColumnListItem
             type="Navigation"
-            press=".onPress">
+            press=".aoClicarEmLivro">
             <cells>
                 <Text text="{listaDeLivros>titulo}"/>
                 <Text text="{listaDeLivros>editora}"/>
@@ -58,7 +58,7 @@
                           }
                     }" 
                     />
-            <ObjectIdentifier title="{listaDeLivros>id}"/>
+            <ObjectIdentifier id="idDaLista" title="{listaDeLivros>id}"/>
             </cells>
         </ColumnListItem>
     </items>

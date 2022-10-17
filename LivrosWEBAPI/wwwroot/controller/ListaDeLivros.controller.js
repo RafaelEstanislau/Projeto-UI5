@@ -28,8 +28,11 @@ sap.ui.define([
         },
 
 		aoClicarEmLivro: function (oEvent) {
+			var oItem = oEvent.getSource();
 			var oRouter = this.getOwnerComponent().getRouter();
-			oRouter.navTo("detalhes");
+			oRouter.navTo("detail", {
+				id: window.encodeURIComponent(oItem.getBindingContext("listaDeLivros").getProperty('id'))
+			});
 		},
 		
 		aoProcurar : function (oEvent) {

@@ -1,9 +1,17 @@
 ﻿sap.ui.require([
-    "sap/ui/core/mvc/XMLView",
-    "sap/ui/model/resource/ResourceModel"
-], function ( XMLView, ResourceModel) {
+	"sap/ui/core/ComponentContainer"
+], function (ComponentContainer) {
     "use strict";
-        sap.ui.getCore().attachInit(function () {
+    new ComponentContainer({
+		name: "sap.ui.demo.walkthrough",
+		settings : {
+			id : "walkthrough"
+		},
+		async: true
+	}).placeAt("content");
+});
+
+        /*sap.ui.getCore().attachInit(function () {
         var oResourceModel = new ResourceModel({
 
             bundleName: "sap.ui.demo.walkthrough.i18n.i18n",
@@ -17,11 +25,7 @@
         sap.ui.getCore().getMessageManager().registerObject(oView, true);
         oView.placeAt("content");
 
-    });
-
-});
-
-
+    });*/
 /*fetch("https://localhost:7012/livros")
         .then(response => response.json())
         .then(data => console.log(data))*/

@@ -38,7 +38,7 @@ namespace LivrosAPI.Controllers
             return Ok(livrosBuscados);
         }
         [HttpGet("{id}")]
-        public IActionResult ObterClientePorId(int id)
+        public IActionResult ObterLivroPorId(int id)
         {
             var livro = _livroServico.BuscarPorID(id);
             if (livro == null)
