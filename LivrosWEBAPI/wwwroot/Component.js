@@ -1,7 +1,6 @@
 sap.ui.define([
-    "sap/ui/core/UIComponent",
-    "sap/ui/model/resource/ResourceModel"
- ], function (UIComponent, ResourceModel) {
+    "sap/ui/core/UIComponent"
+ ], function (UIComponent) {
     "use strict";
     return UIComponent.extend("sap.ui.demo.walkthrough.Component", {
        metadata : {

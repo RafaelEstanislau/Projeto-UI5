@@ -30,9 +30,16 @@ sap.ui.define([
 		aoClicarEmLivro: function (oEvent) {
 			var oItem = oEvent.getSource();
 			var oRouter = this.getOwnerComponent().getRouter();
-			oRouter.navTo("detail", {
+			oRouter.navTo("livroselecionado", {
 				id: window.encodeURIComponent(oItem.getBindingContext("listaDeLivros").getProperty('id'))
 			});
+		},
+		getRouter: function() {
+            return this.getOwnerComponent().getRouter();
+        },
+		aoClicarEmBotaoCadastrar : function(oEvent){
+			
+			this.getRouter().navTo("cadastrarLivro");
 		},
 		
 		aoProcurar : function (oEvent) {

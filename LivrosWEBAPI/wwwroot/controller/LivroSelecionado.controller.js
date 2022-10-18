@@ -1,23 +1,35 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
-    "sap/ui/core/routing/History",
-    "sap/ui/model/json/JSONModel"
-], function (Controller, History, JSONModel) {
+	"sap/ui/core/routing/History",
+	"sap/ui/model/json/JSONModel",
+	"sap/m/MessageBox"
+], function (Controller, History, JSONModel, MessageBox) {
 	"use strict";
 	return Controller.extend("sap.ui.demo.walkthrough.controller.LivroSelecionado", {
 		onInit: function () {
-            this.getOwnerComponent();
+			this.getOwnerComponent();
 			var oRouter = this.getOwnerComponent().getRouter();
-			oRouter.getRoute("detail").attachPatternMatched(this._onObjectMatched, this);
+			oRouter.getRoute("livroselecionado").attachPatternMatched(this._onObjectMatched, this);
 		},
 
 		_onObjectMatched: function (oEvent) {
-			// this.getView().bindElement({
-			// 	path: "/" + window.decodeURIComponent(oEvent.getParameter("arguments").id),
-			// });
-            var idTeste = window.decodeURIComponent(oEvent.getParameter("arguments").id);
-            this.carregarLivros(idTeste);
-          
+			var idTeste = window.decodeURIComponent(oEvent.getParameter("arguments").id);
+			this.carregarLivros(idTeste);
+
+		},
+		carregarLivros: function (idLivroBuscado) {
+			var resultado = this.buscarLivro(idLivroBuscado)
+			resultado.then(livroRetornado => {
+				var oModel = new JSONModel(livroRetornado);
+				this.getView().setModel(oModel, "livro")
+			})
+		},
+		buscarLivro: function (idLivroBuscado) {
+			var livroBuscado = fetch(`https://localhost:7012/livros/${idLivroBuscado}`)
+				.then((response) => response.json())
+				.then(data => livroBuscado = data)
+			return livroBuscado;
+
 		},
 
 		aoClicarEmBotaoVoltar: function () {
@@ -31,20 +43,26 @@ sap.ui.define([
 				oRouter.navTo("overview", {}, true);
 			}
 		},
-        
-        carregarLivros: function(idLivroBuscado){
-            var resultado = this.buscarLivro(idLivroBuscado)
-			    resultado.then(livroRetornado=> {
-                    var oModel = new JSONModel(livroRetornado);
-                    this.getView().setModel(oModel, "livro")
-			})
+		aoClicarEmBotaoEditar: function () {
+			fetch(`https://localhost:7012/livros/${idLivroBuscado}`, {
+				headers: { "Content-Type": "application/json; charset=utf-8" },
+				method: 'PUT',
+				body: JSON.stringify({
+					autor: '',
+                    titulo: '',
+                    editora: '',
+                    lancamento: ''
+				})
+			  })
 		},
-        buscarLivro: function(idDoLivro){
-                var livroBuscado = fetch(`https://localhost:7012/livros/${idDoLivro}`)
-                .then((response) => response.json())
-                .then(data => livroBuscado = data)
-                return livroBuscado;
-                
-        }
+		aoClicarEmBotaoDeletar: function () {
+			MessageBox.confirm("Deseja excluir este livro?");
+			fetch(`https://localhost:7012/livros/${idLivroBuscado}`, {
+				method: 'DELETE'
+			});
+		}
+
+
+
 	});
 });

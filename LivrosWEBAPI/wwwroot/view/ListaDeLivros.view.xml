@@ -17,10 +17,15 @@
         }">
         <headerToolbar>
 			<Toolbar>
-				<Title text="{i18n>tituloListaDeLivros}"/>
+                <Button
+                icon="sap-icon://add"
+                text="Cadastrar"
+                press="aoClicarEmBotaoCadastrar"
+                class="myCustomButton"/>
 				<ToolbarSpacer/>
 				<SearchField width="50%" search="aoProcurar"/>
 			</Toolbar>
+           
 		</headerToolbar>
       <columns>
         <Column>
@@ -63,5 +68,6 @@
         </ColumnListItem>
     </items>
         </Table>
+        
     </Panel>
 </mvc:View>

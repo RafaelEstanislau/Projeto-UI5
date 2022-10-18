@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "6RUjZHEgReOkhY8ajWA3Ks2/ZCRHf91lJ6A+oTi4+gM=",
+  "Hash": "G48rPZyofssxnwjQw+11j4+LVyxXwN/5X+TxtG8Q+Ik=",
   "Source": "LivrosWEBAPI",
   "BasePath": "_content/LivrosWEBAPI",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\controller\\App.controller.js"
+    },
+    {
+      "Identity": "C:\\Users\\Usuario\\Desktop\\CRUD-UI5\\LivrosWEBAPI\\wwwroot\\controller\\CadastrarLivro.controller.js",
+      "SourceId": "LivrosWEBAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Usuario\\Desktop\\CRUD-UI5\\LivrosWEBAPI\\wwwroot\\",
+      "BasePath": "_content/LivrosWEBAPI",
+      "RelativePath": "controller/CadastrarLivro.controller.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\controller\\CadastrarLivro.controller.js"
     },
     {
       "Identity": "C:\\Users\\Usuario\\Desktop\\CRUD-UI5\\LivrosWEBAPI\\wwwroot\\controller\\ListaDeLivros.controller.js",
@@ -170,12 +187,12 @@
       "OriginalItemSpec": "wwwroot\\view\\App.view.xml"
     },
     {
-      "Identity": "C:\\Users\\Usuario\\Desktop\\CRUD-UI5\\LivrosWEBAPI\\wwwroot\\view\\Detail.view.xml",
+      "Identity": "C:\\Users\\Usuario\\Desktop\\CRUD-UI5\\LivrosWEBAPI\\wwwroot\\view\\CadastrarLivro.view.xml",
       "SourceId": "LivrosWEBAPI",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Usuario\\Desktop\\CRUD-UI5\\LivrosWEBAPI\\wwwroot\\",
       "BasePath": "_content/LivrosWEBAPI",
-      "RelativePath": "view/Detail.view.xml",
+      "RelativePath": "view/CadastrarLivro.view.xml",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -184,7 +201,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\view\\Detail.view.xml"
+      "OriginalItemSpec": "wwwroot\\view\\CadastrarLivro.view.xml"
     },
     {
       "Identity": "C:\\Users\\Usuario\\Desktop\\CRUD-UI5\\LivrosWEBAPI\\wwwroot\\view\\ListaDeLivros.view.xml",
@@ -202,6 +219,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\view\\ListaDeLivros.view.xml"
+    },
+    {
+      "Identity": "C:\\Users\\Usuario\\Desktop\\CRUD-UI5\\LivrosWEBAPI\\wwwroot\\view\\LivroSelecionado.view.xml",
+      "SourceId": "LivrosWEBAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Usuario\\Desktop\\CRUD-UI5\\LivrosWEBAPI\\wwwroot\\",
+      "BasePath": "_content/LivrosWEBAPI",
+      "RelativePath": "view/LivroSelecionado.view.xml",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\view\\LivroSelecionado.view.xml"
     },
     {
       "Identity": "C:\\Users\\Usuario\\Desktop\\CRUD-UI5\\LivrosWEBAPI\\wwwroot\\view\\Overview.view.xml",

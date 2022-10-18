@@ -1,0 +1,38 @@
+<mvc:View
+    controllerName="sap.ui.demo.walkthrough.controller.CadastrarLivro"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout">
+    <Page
+	title="{i18n>tituloListaDeLivros}"
+	showNavButton="true"
+	navButtonPress=".aoClicarEmBotaoVoltar">
+	<l:VerticalLayout class="sapUiContentPadding" width="50%">
+		<Label text="Titulo" labelFor="input-titulo" />
+		<Input id="input-titulo" required="true" />
+
+		<Label text="Editora" labelFor="input-editora" />
+		<Input id="input-editora" required="true"  />
+
+
+		<Label text="Autor" labelFor="input-autor" />
+		<Input id="input-autor" required="true" />
+
+        <Label text="Data de lançamento" labelFor="DT"/>
+		<DateTimePicker
+			id="DT"
+            required="true"
+			displayFormat="short"
+			change="handleChange"
+			class="sapUiSmallMarginBottom"/>
+
+	</l:VerticalLayout>
+    <Toolbar>
+		<Button
+			icon="sap-icon://save"
+			text="Salvar"
+			press="aoClicarEmBotaoSalvar"
+			/>
+    </Toolbar>
+    </Page>
+</mvc:View>
