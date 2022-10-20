@@ -5,7 +5,7 @@ sap.ui.define([
 	"sap/m/MessageBox"
 ], function (Controller, History, JSONModel, MessageBox) {
 	"use strict";
-	return Controller.extend("sap.ui.demo.walkthrough.controller.LivroSelecionado", {
+	return Controller.extend("sap.ui.demo.walkthrough.controller.Detalhes", {
 		onInit: function () {
 			this.getOwnerComponent();
 			var oRouter = this.getOwnerComponent().getRouter();
@@ -40,29 +40,37 @@ sap.ui.define([
 				window.history.go(-1);
 			} else {
 				var oRouter = this.getOwnerComponent().getRouter();
-				oRouter.navTo("overview", {}, true);
+				oRouter.navTo("overview", {});
 			}
 		},
 		aoClicarEmBotaoEditar: function () {
-			fetch(`https://localhost:7012/livros/${idLivroBuscado}`, {
-				headers: { "Content-Type": "application/json; charset=utf-8" },
-				method: 'PUT',
-				body: JSON.stringify({
-					autor: '',
-                    titulo: '',
-                    editora: '',
-                    lancamento: ''
-				})
-			  })
+			var idLivro = this.getView().getModel("livro").getData().id
+			var oRouter = this.getOwnerComponent().getRouter();
+				oRouter.navTo("editarLivro",{
+					id: idLivro
+				}
+				);
 		},
 		aoClicarEmBotaoDeletar: function () {
-			MessageBox.confirm("Deseja excluir este livro?");
-			fetch(`https://localhost:7012/livros/${idLivroBuscado}`, {
-				method: 'DELETE'
+			let livroSelecionado = this.getView().getModel("livro").getData();
+			let idASerDeletado = livroSelecionado.id; 
+			let oRouter = this.getOwnerComponent().getRouter();
+		
+			return MessageBox.confirm("Deseja excluir o livro?", {
+				title: "Confirmação",
+				emphasizedAction: sap.m.MessageBox.Action.OK,
+				actions: [ sap.m.MessageBox.Action.OK,
+					sap.m.MessageBox.Action.CANCEL ],       
+				onClose: function(oAction){
+					if(oAction === 'OK'){
+						fetch(`https://localhost:7012/livros/${idASerDeletado}`, {
+							method: 'DELETE'
+						})
+							oRouter.navTo("overview");
+					}
+					
+				},
 			});
 		}
-
-
-
 	});
 });

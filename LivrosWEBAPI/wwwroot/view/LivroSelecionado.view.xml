@@ -1,5 +1,5 @@
 <mvc:View
-	controllerName="sap.ui.demo.walkthrough.controller.LivroSelecionado"
+	controllerName="sap.ui.demo.walkthrough.controller.Detalhes"
 	xmlns="sap.m"
 	xmlns:l="sap.ui.layout"
 	xmlns:mvc="sap.ui.core.mvc">
@@ -7,19 +7,23 @@
 	title="{i18n>tituloListaDeLivros}"
 	showNavButton="true"
 	navButtonPress=".aoClicarEmBotaoVoltar">
+	<headerContent>
 	
-		<Toolbar>
-		<Button
-			icon="sap-icon://edit"
-			text="Editar"
-			press="aoClicarEmBotaoEditar"
-			/>
 			<Button
-			icon="sap-icon://delete"
-			text="Deletar"
-			press="aoClicarEmBotaoDeletar"
-			/>
-		</Toolbar>
+				icon="sap-icon://edit"
+				text="Editar"
+				press="aoClicarEmBotaoEditar"
+				
+				/>
+				<Button
+				icon="sap-icon://delete"
+				text="Deletar"
+				press="aoClicarEmBotaoDeletar"
+				/>
+	
+	</headerContent>
+	
+
 	<l:VerticalLayout
 	class="sapUiContentPadding"
 	width="100%">

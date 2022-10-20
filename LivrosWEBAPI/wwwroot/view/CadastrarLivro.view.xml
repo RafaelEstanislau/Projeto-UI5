@@ -1,38 +1,69 @@
 <mvc:View
-    controllerName="sap.ui.demo.walkthrough.controller.CadastrarLivro"
+	controllerName="sap.ui.demo.walkthrough.controller.CadastrarLivro"
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc"
-	xmlns:l="sap.ui.layout">
-    <Page
-	title="{i18n>tituloListaDeLivros}"
-	showNavButton="true"
-	navButtonPress=".aoClicarEmBotaoVoltar">
-	<l:VerticalLayout class="sapUiContentPadding" width="50%">
-		<Label text="Titulo" labelFor="input-titulo" />
-		<Input id="input-titulo" required="true" />
-
-		<Label text="Editora" labelFor="input-editora" />
-		<Input id="input-editora" required="true"  />
-
-
-		<Label text="Autor" labelFor="input-autor" />
-		<Input id="input-autor" required="true" />
-
-        <Label text="Data de lançamento" labelFor="DT"/>
-		<DateTimePicker
-			id="DT"
-            required="true"
-			displayFormat="short"
-			change="handleChange"
-			class="sapUiSmallMarginBottom"/>
-
-	</l:VerticalLayout>
-    <Toolbar>
-		<Button
-			icon="sap-icon://save"
-			text="Salvar"
-			press="aoClicarEmBotaoSalvar"
+	xmlns:l="sap.ui.layout"
+>
+	<Page
+		title="{i18n>tituloListaDeLivros}"
+		showNavButton="true"
+		navButtonPress=".aoClicarEmBotaoVoltar"
+		id= "formularioDeCadastro"
+	>
+	<headerContent>
+		<Toolbar>
+			<Button
+				icon="sap-icon://save"
+				text="Salvar"
+				press="aoClicarEmBotaoSalvar"
 			/>
-    </Toolbar>
-    </Page>
+		</Toolbar>
+	</headerContent>
+
+		<l:VerticalLayout
+			class="sapUiContentPadding"
+			width="50%"
+		>
+			<Label
+				text="Titulo"
+				labelFor="input-titulo"
+				
+			/>
+			<Input
+				id="input-titulo"
+				required="true"
+				value="{livro>/titulo}"
+			/>
+			<Label
+				text="Editora"
+				labelFor="input-editora"
+			/>
+			<Input
+				id="input-editora"
+				required="true"
+				value="{livro>/editora}"
+			/>
+			<Label
+				text="Autor"
+				labelFor="input-autor"
+			/>
+			<Input
+				id="input-autor"
+				required="true"
+				value="{livro>/autor}"
+			/>
+			<Label
+				text="Data de lançamento"
+				labelFor="DT"
+			/>
+			<DateTimePicker
+				valueFormat="yyyy-MM-ddTHH:mm:ss"
+				id="DT"
+				required="true"
+				displayFormat="short"
+				class="sapUiSmallMarginBottom"
+				value="{livro>/lancamento}"
+			/>
+		</l:VerticalLayout>
+	</Page>
 </mvc:View>

@@ -7,25 +7,33 @@ sap.ui.define([
 	"use strict";
 
 	return Controller.extend("sap.ui.demo.walkthrough.controller.ListaDeLivros", {
-		
-		onInit : function () {
-            this.carregarLivros();
-		},
 
-        carregarLivros: function(){
+		onInit: function () {
+			var router = sap.ui.core.UIComponent.getRouterFor(this);
+			router.attachRoutePatternMatched(this.coincidirRota, this);
+		},
+		coincidirRota: function (oEvent) {
+			if (oEvent.getParameter("name") != "overview") {
+				return;
+			} else {
+				this.carregarLivros();
+			}
+		},
+		carregarLivros: function () {
 			var resultado = this.buscarLivros();
-			resultado.then(lista=> {
+			resultado.then(lista => {
 				var oModel = new JSONModel(lista);
 				this.getView().setModel(oModel, "listaDeLivros")
 			})
 		},
 
-        buscarLivros: function(){
-            var livrosObtidos = fetch("https://localhost:7012/livros")
-                .then((response) => response.json())
-                .then(data => livrosObtidos = data);
-                return livrosObtidos;
-        },
+		buscarLivros: function () {
+			let livrosObtidos = fetch("https://localhost:7012/livros")
+				.then((response) => response.json())
+				.then(data => livrosObtidos = data);
+
+			return livrosObtidos;
+		},
 
 		aoClicarEmLivro: function (oEvent) {
 			var oItem = oEvent.getSource();
@@ -34,15 +42,15 @@ sap.ui.define([
 				id: window.encodeURIComponent(oItem.getBindingContext("listaDeLivros").getProperty('id'))
 			});
 		},
-		getRouter: function() {
-            return this.getOwnerComponent().getRouter();
-        },
-		aoClicarEmBotaoCadastrar : function(oEvent){
-			
+		getRouter: function () {
+			return this.getOwnerComponent().getRouter();
+		},
+		aoClicarEmBotaoCadastrar: function (oEvent) {
+
 			this.getRouter().navTo("cadastrarLivro");
 		},
-		
-		aoProcurar : function (oEvent) {
+
+		aoProcurar: function (oEvent) {
 			var aFilter = [];
 			var sQuery = oEvent.getParameter("query");
 			if (sQuery) {

@@ -30,7 +30,7 @@ namespace LivrosAPI.Controllers
         public IActionResult BuscarTodos()
         {
             var livrosBuscados = _livroServico.BuscarTodos();
-            if(livrosBuscados.Count == 0)
+            if(livrosBuscados == null)
             {
                 return NotFound();
             }

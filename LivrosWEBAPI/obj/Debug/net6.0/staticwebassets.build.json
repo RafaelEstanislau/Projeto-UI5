@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "G48rPZyofssxnwjQw+11j4+LVyxXwN/5X+TxtG8Q+Ik=",
+  "Hash": "mY4Qk5oL19wKf1ceZeOcoUmJ2B2d6qnZBwohpzw3W/8=",
   "Source": "LivrosWEBAPI",
   "BasePath": "_content/LivrosWEBAPI",
   "Mode": "Default",
@@ -68,6 +68,23 @@
       "OriginalItemSpec": "wwwroot\\controller\\CadastrarLivro.controller.js"
     },
     {
+      "Identity": "C:\\Users\\Usuario\\Desktop\\CRUD-UI5\\LivrosWEBAPI\\wwwroot\\controller\\Detalhes.controller.js",
+      "SourceId": "LivrosWEBAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Usuario\\Desktop\\CRUD-UI5\\LivrosWEBAPI\\wwwroot\\",
+      "BasePath": "_content/LivrosWEBAPI",
+      "RelativePath": "controller/Detalhes.controller.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\controller\\Detalhes.controller.js"
+    },
+    {
       "Identity": "C:\\Users\\Usuario\\Desktop\\CRUD-UI5\\LivrosWEBAPI\\wwwroot\\controller\\ListaDeLivros.controller.js",
       "SourceId": "LivrosWEBAPI",
       "SourceType": "Discovered",
@@ -83,23 +100,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\controller\\ListaDeLivros.controller.js"
-    },
-    {
-      "Identity": "C:\\Users\\Usuario\\Desktop\\CRUD-UI5\\LivrosWEBAPI\\wwwroot\\controller\\LivroSelecionado.controller.js",
-      "SourceId": "LivrosWEBAPI",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Usuario\\Desktop\\CRUD-UI5\\LivrosWEBAPI\\wwwroot\\",
-      "BasePath": "_content/LivrosWEBAPI",
-      "RelativePath": "controller/LivroSelecionado.controller.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\controller\\LivroSelecionado.controller.js"
     },
     {
       "Identity": "C:\\Users\\Usuario\\Desktop\\CRUD-UI5\\LivrosWEBAPI\\wwwroot\\i18n\\i18n.properties",
