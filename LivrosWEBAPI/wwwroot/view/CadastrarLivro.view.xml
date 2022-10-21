@@ -27,6 +27,7 @@
 			<Label
 				text="Titulo"
 				labelFor="input-titulo"
+				required="true"
 				
 			/>
 			<Input
@@ -37,6 +38,7 @@
 			<Label
 				text="Editora"
 				labelFor="input-editora"
+				required="true"
 			/>
 			<Input
 				id="input-editora"
@@ -46,15 +48,18 @@
 			<Label
 				text="Autor"
 				labelFor="input-autor"
+				required="true"
 			/>
 			<Input
 				id="input-autor"
 				required="true"
 				value="{livro>/autor}"
+				
 			/>
 			<Label
 				text="Data de lançamento"
 				labelFor="DT"
+				required="true"
 			/>
 			<DateTimePicker
 				valueFormat="yyyy-MM-ddTHH:mm:ss"
@@ -63,6 +68,7 @@
 				displayFormat="short"
 				class="sapUiSmallMarginBottom"
 				value="{livro>/lancamento}"
+				
 			/>
 		</l:VerticalLayout>
 	</Page>

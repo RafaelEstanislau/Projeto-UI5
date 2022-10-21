@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "mY4Qk5oL19wKf1ceZeOcoUmJ2B2d6qnZBwohpzw3W/8=",
+  "Hash": "UFZ52rM7LKNES56h5fi8XchKx14WPHz42oG1b4oMmEc=",
   "Source": "LivrosWEBAPI",
   "BasePath": "_content/LivrosWEBAPI",
   "Mode": "Default",
@@ -204,6 +204,23 @@
       "OriginalItemSpec": "wwwroot\\view\\CadastrarLivro.view.xml"
     },
     {
+      "Identity": "C:\\Users\\Usuario\\Desktop\\CRUD-UI5\\LivrosWEBAPI\\wwwroot\\view\\Detalhes.view.xml",
+      "SourceId": "LivrosWEBAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Usuario\\Desktop\\CRUD-UI5\\LivrosWEBAPI\\wwwroot\\",
+      "BasePath": "_content/LivrosWEBAPI",
+      "RelativePath": "view/Detalhes.view.xml",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\view\\Detalhes.view.xml"
+    },
+    {
       "Identity": "C:\\Users\\Usuario\\Desktop\\CRUD-UI5\\LivrosWEBAPI\\wwwroot\\view\\ListaDeLivros.view.xml",
       "SourceId": "LivrosWEBAPI",
       "SourceType": "Discovered",
@@ -219,23 +236,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\view\\ListaDeLivros.view.xml"
-    },
-    {
-      "Identity": "C:\\Users\\Usuario\\Desktop\\CRUD-UI5\\LivrosWEBAPI\\wwwroot\\view\\LivroSelecionado.view.xml",
-      "SourceId": "LivrosWEBAPI",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Usuario\\Desktop\\CRUD-UI5\\LivrosWEBAPI\\wwwroot\\",
-      "BasePath": "_content/LivrosWEBAPI",
-      "RelativePath": "view/LivroSelecionado.view.xml",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\view\\LivroSelecionado.view.xml"
     },
     {
       "Identity": "C:\\Users\\Usuario\\Desktop\\CRUD-UI5\\LivrosWEBAPI\\wwwroot\\view\\Overview.view.xml",

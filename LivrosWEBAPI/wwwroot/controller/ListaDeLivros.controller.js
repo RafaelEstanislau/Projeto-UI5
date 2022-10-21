@@ -9,8 +9,9 @@ sap.ui.define([
 	return Controller.extend("sap.ui.demo.walkthrough.controller.ListaDeLivros", {
 
 		onInit: function () {
-			var router = sap.ui.core.UIComponent.getRouterFor(this);
-			router.attachRoutePatternMatched(this.coincidirRota, this);
+			this.getOwnerComponent();
+			var oRouter = this.getOwnerComponent().getRouter();
+			oRouter.getRoute("overview").attachPatternMatched(this.coincidirRota, this);
 		},
 		coincidirRota: function (oEvent) {
 			if (oEvent.getParameter("name") != "overview") {
@@ -18,6 +19,7 @@ sap.ui.define([
 			} else {
 				this.carregarLivros();
 			}
+
 		},
 		carregarLivros: function () {
 			var resultado = this.buscarLivros();
@@ -38,14 +40,14 @@ sap.ui.define([
 		aoClicarEmLivro: function (oEvent) {
 			var oItem = oEvent.getSource();
 			var oRouter = this.getOwnerComponent().getRouter();
-			oRouter.navTo("livroselecionado", {
+			oRouter.navTo("detalhes", {
 				id: window.encodeURIComponent(oItem.getBindingContext("listaDeLivros").getProperty('id'))
 			});
 		},
 		getRouter: function () {
 			return this.getOwnerComponent().getRouter();
 		},
-		aoClicarEmBotaoCadastrar: function (oEvent) {
+		aoClicarEmBotaoCadastrar: function () {
 
 			this.getRouter().navTo("cadastrarLivro");
 		},

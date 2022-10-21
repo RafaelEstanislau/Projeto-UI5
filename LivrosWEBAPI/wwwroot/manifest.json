@@ -58,9 +58,9 @@
 		  "target": "overview"
 		},
 		{
-		  "pattern": "livroSelecionado/{id}",
-		  "name": "livroselecionado",
-		  "target": "livroselecionado"
+		  "pattern": "detalhes/{id}",
+		  "name": "detalhes",
+		  "target": "detalhes"
 		},
 		{
 			"pattern": "cadastrarLivro",
@@ -72,17 +72,15 @@
 			"name": "editarLivro",
 			"target": "cadastrarLivro"
 		}
-
-		
 	  ],
 	  "targets": {
 		"overview": {
 		  "id": "overview",
 		  "name": "Overview"
 		},
-		"livroselecionado": {
-		  "id": "livroselecionado",
-		  "name": "LivroSelecionado"
+		"detalhes": {
+		  "id": "detalhes",
+		  "name": "Detalhes"
 		},
 		"cadastrarLivro":{
 		  "id": "cadastrarLivro",

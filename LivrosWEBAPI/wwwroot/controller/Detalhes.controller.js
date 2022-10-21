@@ -9,13 +9,16 @@ sap.ui.define([
 		onInit: function () {
 			this.getOwnerComponent();
 			var oRouter = this.getOwnerComponent().getRouter();
-			oRouter.getRoute("livroselecionado").attachPatternMatched(this._onObjectMatched, this);
+			oRouter.getRoute("detalhes").attachPatternMatched(this.coincidirRota, this);
 		},
 
-		_onObjectMatched: function (oEvent) {
-			var idTeste = window.decodeURIComponent(oEvent.getParameter("arguments").id);
-			this.carregarLivros(idTeste);
-
+		coincidirRota: function (oEvent) {
+			if (oEvent.getParameter("name") != "detalhes") {
+				return;
+			} else {
+				var idTeste = window.decodeURIComponent(oEvent.getParameter("arguments").id);
+				this.carregarLivros(idTeste);
+			}
 		},
 		carregarLivros: function (idLivroBuscado) {
 			var resultado = this.buscarLivro(idLivroBuscado)
@@ -35,7 +38,7 @@ sap.ui.define([
 		aoClicarEmBotaoVoltar: function () {
 			var oHistory = History.getInstance();
 			var sPreviousHash = oHistory.getPreviousHash();
-
+			var inputAutor = this.getView()
 			if (sPreviousHash !== undefined) {
 				window.history.go(-1);
 			} else {
@@ -46,29 +49,29 @@ sap.ui.define([
 		aoClicarEmBotaoEditar: function () {
 			var idLivro = this.getView().getModel("livro").getData().id
 			var oRouter = this.getOwnerComponent().getRouter();
-				oRouter.navTo("editarLivro",{
-					id: idLivro
-				}
-				);
+			oRouter.navTo("editarLivro", {
+				id: idLivro
+			});
 		},
-		aoClicarEmBotaoDeletar: function () {
+		aoClicarEmBotaoDeletar:  function () {
 			let livroSelecionado = this.getView().getModel("livro").getData();
-			let idASerDeletado = livroSelecionado.id; 
+			let idASerDeletado = livroSelecionado.id;
 			let oRouter = this.getOwnerComponent().getRouter();
-		
+
 			return MessageBox.confirm("Deseja excluir o livro?", {
 				title: "Confirmação",
 				emphasizedAction: sap.m.MessageBox.Action.OK,
-				actions: [ sap.m.MessageBox.Action.OK,
-					sap.m.MessageBox.Action.CANCEL ],       
-				onClose: function(oAction){
-					if(oAction === 'OK'){
-						fetch(`https://localhost:7012/livros/${idASerDeletado}`, {
+				actions: [sap.m.MessageBox.Action.OK,
+					sap.m.MessageBox.Action.CANCEL
+				],
+				onClose: async function (oAction) {
+					if (oAction === 'OK') {
+						await fetch(`https://localhost:7012/livros/${idASerDeletado}`, {
 							method: 'DELETE'
 						})
-							oRouter.navTo("overview");
+						oRouter.navTo("overview");
 					}
-					
+
 				},
 			});
 		}
