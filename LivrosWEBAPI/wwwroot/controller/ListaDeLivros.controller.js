@@ -11,25 +11,25 @@ sap.ui.define([
 		onInit: function () {
 			this.getOwnerComponent();
 			var oRouter = this.getOwnerComponent().getRouter();
-			oRouter.getRoute("overview").attachPatternMatched(this.coincidirRota, this);
+			oRouter.getRoute("overview").attachPatternMatched(this._coincidirRota, this);
 		},
-		coincidirRota: function (oEvent) {
+		_coincidirRota: function (oEvent) {
 			if (oEvent.getParameter("name") != "overview") {
 				return;
 			} else {
-				this.carregarLivros();
+				this._carregarLivros();
 			}
 
 		},
-		carregarLivros: function () {
-			var resultado = this.buscarLivros();
+		_carregarLivros: function () {
+			var resultado = this._buscarLivros();
 			resultado.then(lista => {
 				var oModel = new JSONModel(lista);
 				this.getView().setModel(oModel, "listaDeLivros")
 			})
 		},
 
-		buscarLivros: function () {
+		_buscarLivros: function () {
 			let livrosObtidos = fetch("https://localhost:7012/livros")
 				.then((response) => response.json())
 				.then(data => livrosObtidos = data);

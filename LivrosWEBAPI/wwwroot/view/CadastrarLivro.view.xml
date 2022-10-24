@@ -33,7 +33,14 @@
 			<Input
 				id="input-titulo"
 				required="true"
-				value="{livro>/titulo}"
+				value="{
+					path : 'livro>/titulo',
+					type : 'sap.ui.model.type.String',
+					constraints : {
+						minLength: 1,
+						maxLength: 100
+					}
+				}"
 			/>
 			<Label
 				text="Editora"
@@ -43,7 +50,14 @@
 			<Input
 				id="input-editora"
 				required="true"
-				value="{livro>/editora}"
+				value="{
+					path : 'livro>/editora',
+					type : 'sap.ui.model.type.String',
+					constraints : {
+						minLength: 1,
+						maxLength: 100
+					}
+				}"
 			/>
 			<Label
 				text="Autor"
@@ -53,7 +67,14 @@
 			<Input
 				id="input-autor"
 				required="true"
-				value="{livro>/autor}"
+				value="{
+					path : 'livro>/autor',
+					type : 'sap.ui.model.type.String',
+					constraints : {
+						minLength: 1,
+						maxLength: 100
+					}
+				}"
 				
 			/>
 			<Label
@@ -61,14 +82,12 @@
 				labelFor="DT"
 				required="true"
 			/>
-			<DateTimePicker
-				valueFormat="yyyy-MM-ddTHH:mm:ss"
+			<DatePicker
 				id="DT"
-				required="true"
-				displayFormat="short"
+				placeholder="Enter Date"
 				class="sapUiSmallMarginBottom"
+				valueFormat="dd-MM-yyyy"
 				value="{livro>/lancamento}"
-				
 			/>
 		</l:VerticalLayout>
 	</Page>

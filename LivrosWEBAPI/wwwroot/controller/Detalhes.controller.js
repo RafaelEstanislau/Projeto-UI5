@@ -9,25 +9,25 @@ sap.ui.define([
 		onInit: function () {
 			this.getOwnerComponent();
 			var oRouter = this.getOwnerComponent().getRouter();
-			oRouter.getRoute("detalhes").attachPatternMatched(this.coincidirRota, this);
+			oRouter.getRoute("detalhes").attachPatternMatched(this._coincidirRota, this);
 		},
 
-		coincidirRota: function (oEvent) {
+		_coincidirRota: function (oEvent) {
 			if (oEvent.getParameter("name") != "detalhes") {
 				return;
 			} else {
 				var idTeste = window.decodeURIComponent(oEvent.getParameter("arguments").id);
-				this.carregarLivros(idTeste);
+				this._carregarLivros(idTeste);
 			}
 		},
-		carregarLivros: function (idLivroBuscado) {
-			var resultado = this.buscarLivro(idLivroBuscado)
+		_carregarLivros: function (idLivroBuscado) {
+			var resultado = this._buscarLivro(idLivroBuscado)
 			resultado.then(livroRetornado => {
 				var oModel = new JSONModel(livroRetornado);
 				this.getView().setModel(oModel, "livro")
 			})
 		},
-		buscarLivro: function (idLivroBuscado) {
+		_buscarLivro: function (idLivroBuscado) {
 			var livroBuscado = fetch(`https://localhost:7012/livros/${idLivroBuscado}`)
 				.then((response) => response.json())
 				.then(data => livroBuscado = data)
@@ -38,7 +38,6 @@ sap.ui.define([
 		aoClicarEmBotaoVoltar: function () {
 			var oHistory = History.getInstance();
 			var sPreviousHash = oHistory.getPreviousHash();
-			var inputAutor = this.getView()
 			if (sPreviousHash !== undefined) {
 				window.history.go(-1);
 			} else {

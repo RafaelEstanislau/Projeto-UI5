@@ -3,44 +3,61 @@ sap.ui.define([
 	"sap/ui/core/routing/History",
 	"sap/m/MessageBox",
 	"sap/ui/model/json/JSONModel",
+	"sap/ui/core/Core",
+
 ], function (Controller,
 	History,
 	MessageBox,
-	JSONModel) {
+	JSONModel,
+	Core) {
 	"use strict";
-	return Controller.extend("sap.ui.demo.walkthrough.controller.CadastrarLivro", {
+	return Controller.extend("sap.ui.demo.walkthrough.controller.CadastrarLivro" , {
 		onInit: function () {
 			var router = sap.ui.core.UIComponent.getRouterFor(this);
-			router.attachRoutePatternMatched(this.coincidirRota, this);
-			sap.ui.getCore().attachValidationError(function (oEvent) {
+			router.attachRoutePatternMatched(this._coincidirRota, this);
+			var tela = this.getView(),
+				oMM = Core.getMessageManager();
+			oMM.registerObject(tela.byId("input-titulo"), true)
+			oMM.registerObject(tela.byId("input-editora"), true)
+			oMM.registerObject(tela.byId("input-autor"), true)
+			oMM.registerObject(tela.byId("DT"), true)
 
-				oEvent.getParameter("element").setValueState(ValueState.Error);
-	
-			});
-	
-			sap.ui.getCore().attachValidationSuccess(function (oEvent) {
-	
-				oEvent.getParameter("element").setValueState(ValueState.None);
-	
-			});
+			window.tela = tela;
 		},
-		coincidirRota: function (oEvent) {
+		_coincidirRota: function (oEvent) {
 			if (oEvent.getParameter("name") == "editarLivro") {
 				var idAEditar = window.decodeURIComponent(oEvent.getParameter("arguments").id);
-				this.carregarLivros(idAEditar)
+				this._carregarLivros(idAEditar)
 			} else {
 				this.getView().setModel(new sap.ui.model.json.JSONModel({}), "livro");
 			}
 
 		},
-		carregarLivros: function (idAEditar) {
-			var resultado = this.buscarLivro(idAEditar)
+		validarCampo: function (input) {
+			var estado = "None";
+			var erroDeValidacao = false;
+			var oBinding = input.getBinding("value");
+			let dataInserida = this.getView().byId("DT");
+			var dataTeste = dataInserida.getValue();
+			try {
+				oBinding.getType().validateValue(input.getValue());
+			} catch (oException) {
+				estado = "Error";
+				erroDeValidacao = true;
+			}
+
+			input.setValueState(estado);
+			return erroDeValidacao;
+
+		},
+		_carregarLivros: function (idAEditar) {
+			var resultado = this._buscarLivro(idAEditar)
 			resultado.then(livroRetornado => {
 				var oModel = new JSONModel(livroRetornado);
 				this.getView().setModel(oModel, "livro")
 			})
 		},
-		buscarLivro: function (idAEditar) {
+		_buscarLivro: function (idAEditar) {
 			var livroBuscado = fetch(`https://localhost:7012/livros/${idAEditar}`)
 				.then((response) => response.json())
 				.then(data => livroBuscado = data)
@@ -60,63 +77,86 @@ sap.ui.define([
 		},
 
 		aoClicarEmBotaoSalvar: function () {
-			var oModel = this.getView().getModel("livro").getData();
+			var livroASerSalvo = this.getView().getModel("livro").getData();
 			let oRouter = this.getOwnerComponent().getRouter();
 			
+			//formatar o valor imputado para um valor de data
+			
 
-			if (!!oModel.id) {
+			var telaCadastro = this.getView(),
+				inputs = [
+					telaCadastro.byId("input-titulo"),
+					telaCadastro.byId("input-editora"),
+					telaCadastro.byId("input-autor"),
+					telaCadastro.byId("DT")
+					
+				],
+				erroDeValidacao = false;
+
+
+			inputs.forEach(function (input) {
+				erroDeValidacao = this.validarCampo(input) || erroDeValidacao;
+			}, this);
+
+			if (!erroDeValidacao) {
+				if (!!livroASerSalvo.id) {
 					MessageBox.confirm("Deseja concluir a edição?", {
-					title: "Confirmação",
-					emphasizedAction: sap.m.MessageBox.Action.OK,
-					actions: [sap.m.MessageBox.Action.OK,
-						sap.m.MessageBox.Action.CANCEL
-					],
-					onClose: async function (oAction) {
-						if (oAction === 'OK') {
-							await fetch(`https://localhost:7012/livros/${oModel.id}`, {
-								headers: {
-									"Content-Type": "application/json; charset=utf-8"
-								},
-								method: 'PUT',
-								body: JSON.stringify({
-									id: oModel.id,
-									autor: oModel.autor,
-									titulo: oModel.titulo,
-									editora: oModel.editora,
-									lancamento: oModel.lancamento,
+						title: "Confirmação",
+						emphasizedAction: sap.m.MessageBox.Action.OK,
+						actions: [sap.m.MessageBox.Action.OK,
+							sap.m.MessageBox.Action.CANCEL
+						],
+						onClose: async function (oAction) {
+							if (oAction === 'OK') {
+								await fetch(`https://localhost:7012/livros/${livroASerSalvo.id}`, {
+									headers: {
+										"Content-Type": "application/json; charset=utf-8"
+									},
+									method: 'PUT',
+									body: JSON.stringify({
+										id: livroASerSalvo.id,
+										autor: livroASerSalvo.autor,
+										titulo: livroASerSalvo.titulo,
+										editora: livroASerSalvo.editora,
+										lancamento: livroASerSalvo.lancamento,
+									})
 								})
-							})
-							oRouter.navTo("overview");
-						}
-					},
-				})
+								oRouter.navTo("overview");
+							}
+						},
+					})
 
-			} else {
-				return MessageBox.confirm("Deseja concluir o cadastro?", {
-					title: "Confirmação",
-					emphasizedAction: sap.m.MessageBox.Action.OK,
-					actions: [sap.m.MessageBox.Action.OK,
-						sap.m.MessageBox.Action.CANCEL
-					],
-					onClose: async function (oAction) {
-						if (oAction === 'OK') {
-							await fetch('https://localhost:7012/livros', {
-								headers: {
-									"Content-Type": "application/json; charset=utf-8"
-								},
-								method: 'POST',
-								body: JSON.stringify({
-									autor: oModel.autor,
-									titulo: oModel.titulo,
-									editora: oModel.editora,
-									lancamento: oModel.lancamento,
+				} else {
+					return MessageBox.confirm("Deseja concluir o cadastro?", {
+						title: "Confirmação",
+						emphasizedAction: sap.m.MessageBox.Action.OK,
+						actions: [sap.m.MessageBox.Action.OK,
+							sap.m.MessageBox.Action.CANCEL
+						],
+						onClose: async function (oAction) {
+							if (oAction === 'OK') {
+								await fetch('https://localhost:7012/livros', {
+									headers: {
+										"Content-Type": "application/json; charset=utf-8"
+									},
+									method: 'POST',
+									body: JSON.stringify({
+										autor: livroASerSalvo.autor,
+										titulo: livroASerSalvo.titulo,
+										editora: livroASerSalvo.editora,
+										lancamento: livroASerSalvo.lancamento,
+									})
 								})
-							})
-							oRouter.navTo("overview");
-						}
-					},
-				})
-			};
+								oRouter.navTo("overview");
+							}
+						},
+					})
+				};
+			} else {
+				MessageBox.alert("Todos os campos devem ser preenchidos");
+			}
+
+
 		},
 	});
 });
