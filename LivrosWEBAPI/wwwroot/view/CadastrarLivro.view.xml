@@ -82,13 +82,12 @@
 				labelFor="DT"
 				required="true"
 			/>
-			<DatePicker
-				id="DT"
-				placeholder="Enter Date"
-				class="sapUiSmallMarginBottom"
-				valueFormat="dd-MM-yyyy"
-				value="{livro>/lancamento}"
-			/>
+			<DateTimePicker
+			id="DT"
+			displayFormat="short"
+			required="true"
+			valueFormat="yyyy-MM-ddTHH:mm:ss"
+			value="{livro>/lancamento}"/>
 		</l:VerticalLayout>
 	</Page>
 </mvc:View>
