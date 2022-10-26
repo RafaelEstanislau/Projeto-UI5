@@ -6,19 +6,19 @@
 	<Page
 	title="{i18n>tituloListaDeLivros}"
 	showNavButton="true"
-	navButtonPress=".aoClicarEmBotaoVoltar">
+	navButtonPress=".aoClicarEmVoltar">
 	<headerContent>
 	
 			<Button
 				icon="sap-icon://edit"
 				text="Editar"
-				press="aoClicarEmBotaoEditar"
+				press="aoClicarEmEditar"
 				
 				/>
 				<Button
 				icon="sap-icon://delete"
 				text="Deletar"
-				press="aoClicarEmBotaoDeletar"
+				press="aoClicarEmDeletar"
 				/>
 	
 	</headerContent>

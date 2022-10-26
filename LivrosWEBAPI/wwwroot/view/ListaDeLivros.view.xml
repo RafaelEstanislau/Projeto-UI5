@@ -20,7 +20,7 @@
                 <Button
                 icon="sap-icon://add"
                 text="Cadastrar"
-                press="aoClicarEmBotaoCadastrar"
+                press="aoClicarEmCadastrar"
                 class="myCustomButton"/>
 				<ToolbarSpacer/>
 				<SearchField width="50%" search="aoProcurar"/>

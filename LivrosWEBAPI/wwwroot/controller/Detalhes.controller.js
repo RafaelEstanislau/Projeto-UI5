@@ -35,7 +35,7 @@ sap.ui.define([
 
 		},
 
-		aoClicarEmBotaoVoltar: function () {
+		aoClicarEmVoltar: function () {
 			var oHistory = History.getInstance();
 			var sPreviousHash = oHistory.getPreviousHash();
 			if (sPreviousHash !== undefined) {
@@ -45,14 +45,14 @@ sap.ui.define([
 				oRouter.navTo("overview", {});
 			}
 		},
-		aoClicarEmBotaoEditar: function () {
+		aoClicarEmEditar: function () {
 			var idLivro = this.getView().getModel("livro").getData().id
 			var oRouter = this.getOwnerComponent().getRouter();
 			oRouter.navTo("editarLivro", {
 				id: idLivro
 			});
 		},
-		aoClicarEmBotaoDeletar:  function () {
+		aoClicarEmDeletar: function () {
 			let livroSelecionado = this.getView().getModel("livro").getData();
 			let idASerDeletado = livroSelecionado.id;
 			let oRouter = this.getOwnerComponent().getRouter();

@@ -47,7 +47,7 @@ sap.ui.define([
 		getRouter: function () {
 			return this.getOwnerComponent().getRouter();
 		},
-		aoClicarEmBotaoCadastrar: function () {
+		aoClicarEmCadastrar: function () {
 
 			this.getRouter().navTo("cadastrarLivro");
 		},
